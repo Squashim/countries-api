@@ -25,7 +25,28 @@
 				</div>
 			</div>
 		</header>
-		<main id="root"></main>
+		<main id="root">
+			<div class="filters">
+				<div class="search-bar">
+					<i
+						style="color: hsl(0, 0%, 52%)"
+						class="fa-lg fa-solid fa-magnifying-glass"
+					></i>
+					<input type="text" id="query" placeholder="Search for a country..." />
+				</div>
+
+				<div class="custom-select">
+					<select name="region" id="region">
+						<option value="" hidden disabled selected>Filter by Region</option>
+						<option value="Africa">Africa</option>
+						<option value="America">America</option>
+						<option value="Asia">Asia</option>
+						<option value="Europe">Europe</option>
+						<option value="Oceania">Oceania</option>
+					</select>
+				</div>
+			</div>
+		</main>
 		<script src="dom-utils.js" type="module"></script>
 		<script type="module" src="app.js"></script>
 	</body>
