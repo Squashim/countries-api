@@ -36,7 +36,10 @@ const createCountryItemElement = (country) => {
 
 	infoContainerElement.appendChild(countryNameElement);
 	infoContainerElement.append(
-		createInfoElement("Population", country.population)
+		createInfoElement(
+			"Population",
+			country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		)
 	);
 	infoContainerElement.append(createInfoElement("Region", country.region));
 	infoContainerElement.append(createInfoElement("Capital", country.capital));
