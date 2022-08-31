@@ -47,7 +47,7 @@ header .content {
 .theme-container button {
 	background: none;
 	border: none;
-	font-size: 21px;
+	font-size: 18px;
 	cursor: pointer;
 }
 main {
@@ -86,20 +86,20 @@ main ul li img {
 .search-bar {
 	position: relative;
 	height: 100%;
-	width: 450px;
 }
 .search-bar i {
 	position: absolute;
 	cursor: pointer;
 	top: 50%;
-	left: 30px;
+	left: 15px;
 	transform: translate(10px, -50%);
 }
 
 #query {
 	box-shadow: 0px 8px 20px -10px rgba(0, 0, 0, 0.2);
-	padding: 20px 10px 20px 80px;
-	width: 100%;
+	padding: 20px 10px 20px 65px;
+	width: 400px;
+	max-width: 100%;
 	border: none;
 	color: var(--color-light-mode-input);
 	font-size: 14px;
@@ -109,7 +109,6 @@ main ul li img {
 .custom-select {
 	position: relative;
 	font-family: "Nunito Sans", sans-serif;
-	width: 150px;
 }
 .custom-select select {
 	display: none;
@@ -117,9 +116,11 @@ main ul li img {
 
 .select-selected {
 	background-color: var(--color-white);
+	position: relative;
 	border-radius: 7px;
 	box-shadow: 0px 8px 20px -10px rgba(0, 0, 0, 0.2);
 	height: 100%;
+	width: 190px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -129,7 +130,7 @@ main ul li img {
 	position: absolute;
 	content: "";
 	top: 26px;
-	right: 10px;
+	right: 20px;
 	width: 0;
 	height: 0;
 	border: 6px solid transparent;
@@ -141,11 +142,11 @@ main ul li img {
 }
 .select-items div,
 .select-selected {
-	max-width: 200px;
 	color: black;
 	font-size: 14px;
-	padding: 3px 20px;
+	padding: 4px 20px;
 	cursor: pointer;
+	font-weight: 600;
 }
 .select-items {
 	position: absolute;
@@ -155,15 +156,12 @@ main ul li img {
 	right: 0;
 	z-index: 99;
 	border-radius: 7px;
-	margin-top: 10px;
+	margin-top: 5px;
 	padding: 15px 0;
+	box-shadow: 0px 8px 20px -10px rgba(0, 0, 0, 0.2);
 }
 .select-hide {
 	display: none;
-}
-
-select-items div:hover {
-	border-radius: 7px;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -176,10 +174,41 @@ select-items div:hover {
 	main ul {
 		grid-template-columns: repeat(2, 1fr);
 	}
+	#query {
+		width: 245px;
+	}
 }
 
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 500px) {
 	main ul {
 		grid-template-columns: 1fr;
+		padding: 0 16px;
+	}
+	header .content {
+		padding: 0 16px;
+	}
+	header h1 {
+		font-size: 16px;
+	}
+	.theme-container button {
+		font-size: 14px;
+	}
+	.filters {
+		flex-direction: column;
+	}
+	#query {
+		width: 100%;
+	}
+	.custom-select {
+		margin-top: 40px;
+	}
+	.select-selected {
+		padding: 19px 25px;
+	}
+	.select-items {
+		width: 190px;
+	}
+	.select-items div {
+		padding: 4px 25px;
 	}
 }
