@@ -11,7 +11,6 @@ const createInfoElement = (labelName, value) => {
 
 	return infoElement;
 };
-
 const createFlagImgElement = (country) => {
 	const imgContainerElement = document.createElement("div");
 	const imgElement = document.createElement("img");
@@ -66,6 +65,7 @@ const createDetailElement = (country) => {
 	const flagImgElement = createFlagImgElement(country);
 	const detailContentElement = document.createElement("div");
 	const detailNameElement = document.createElement("strong");
+	detailNameElement.classList.add("country-detail-name");
 	detailNameElement.innerText = country.name;
 
 	detailContainerElement.classList.add("detail-container");
@@ -119,15 +119,24 @@ const createBorderCountriesContainer = (country) => {
 	const borderCountriesContainerElement = document.createElement("div");
 
 	const labelElement = document.createElement("strong");
-	labelElement.innerText = "Border Countries";
+	labelElement.innerText = "Border Countries: ";
+
+	const buttonsContainerElement = document.createElement("div");
+	buttonsContainerElement.classList.add("border-buttons-container");
 
 	borderCountriesContainerElement.appendChild(labelElement);
+	//todo
+	// country.borderCountries.forEach((border) => {
+	// 	buttonsContainerElement.appendChild(
+	// 		createRouteButton(
+	// 			translateCountryBorderName(border),
+	// 			"border-country-btn",
+	// 			`/?country=${border}`
+	// 		)
+	// 	);
+	// });
 
-	country.borderCountries.forEach((border) => {
-		borderCountriesContainerElement.appendChild(
-			createRouteButton(border, "border-country-btn", `/?country=${border}`)
-		);
-	});
+	borderCountriesContainerElement.appendChild(buttonsContainerElement);
 
 	return borderCountriesContainerElement;
 };
