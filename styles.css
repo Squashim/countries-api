@@ -66,6 +66,10 @@ main ul li {
 	overflow: hidden;
 	box-shadow: 0px 8px 20px -5px rgba(0, 0, 0, 0.2);
 }
+main ul li a {
+	color: var(--color-light-mode-text);
+	text-decoration: none;
+}
 main ul li img {
 	aspect-ratio: 160/98;
 	width: 100%;
@@ -84,6 +88,9 @@ main ul li img {
 	max-width: 1280px;
 	margin: 32px auto;
 	padding: 0 32px;
+}
+.filters.hidden {
+	display: none;
 }
 .search-bar {
 	position: relative;
