@@ -2,12 +2,24 @@
 
 ## Table of contents
 
-- [Overview](#overview)
-- [The challenge](#the-challenge)
 - [Screenshot](#screenshot) 
+- [The challenge](#the-challenge)
 - [Links](#links)
 - [Author](#author)
+### Screenshot
 
+<table>
+        <tr>
+            <td>
+                <img src="images/mobile.png"
+                    alt="Mobile solution" title="Mobile solution" width="100%"/>
+            </td>
+            <td>
+                <img src="images/desktop.png"
+                    alt="Desktop solution" width="100%" title="Desktop solution"/>
+            </td>
+        </tr>
+</table>
 
 ## The challenge
 
@@ -24,21 +36,6 @@ Your users should be able to:
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode _(optional)_
 
-
-### Screenshot
-
-<table>
-        <tr>
-            <td>
-                <img src="images/mobile.png"
-                    alt="Mobile solution" title="Mobile solution" width="100%"/>
-            </td>
-            <td>
-                <img src="images/desktop.png"
-                    alt="Desktop solution" width="100%" title="Desktop solution"/>
-            </td>
-        </tr>
-</table>
 
 ### Links
 
