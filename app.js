@@ -33,14 +33,13 @@ if (theme === "dark") {
 	themeBtn.textContent = "Light Mode";
 	sun.classList.remove("hidden");
 	moon.classList.add("hidden");
-}
-
-if (theme === "light") {
+} else {
 	document.querySelector("body").classList.add("light");
 	themeBtn.textContent = "Dark Mode";
 	sun.classList.add("hidden");
 	moon.classList.remove("hidden");
 }
+
 if (window.location.search.includes("?country=")) {
 	document.querySelector(".filters").classList.add("hidden");
 	renderDetail();
