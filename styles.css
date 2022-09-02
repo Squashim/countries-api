@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 :root {
-	/* - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-    - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%) */
-
+	--color-dark-elements: hsl(209, 23%, 22%);
+	--color-dark-bg: hsl(207, 26%, 17%);
 	--color-light-mode-text: hsl(200, 15%, 8%);
 	--color-light-mode-input: hsl(0, 0%, 52%);
 	--color-light-mode-background: hsl(0, 0%, 98%);
@@ -20,9 +19,16 @@ body {
 	font-family: "Nunito Sans", sans-serif;
 	background-color: var(--color-light-mode-background);
 }
+body.dark {
+	--color-light-mode-background: var(--color-dark-bg);
+	--color-white: var(--color-dark-elements);
+	--color-light-mode-text: #fff;
+	--color-light-mode-input: #fff;
+}
 header {
 	margin: 0 auto;
 	height: 80px;
+	color: var(--color-light-mode-text);
 	background-color: var(--color-white);
 	box-shadow: 0px 8px 20px -15px rgba(0, 0, 0, 0.2);
 }
@@ -50,6 +56,7 @@ header .content {
 	border: none;
 	font-size: 18px;
 	cursor: pointer;
+	color: var(--color-light-mode-text);
 }
 main {
 	max-width: 1280px;
@@ -63,6 +70,7 @@ main ul {
 	gap: 70px;
 }
 main ul li {
+	background-color: var(--color-white);
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0px 8px 20px -5px rgba(0, 0, 0, 0.2);
@@ -71,12 +79,16 @@ main ul li a {
 	color: var(--color-light-mode-text);
 	text-decoration: none;
 }
+main ul li div {
+	background-color: var(--color-white);
+}
 main ul li img {
 	aspect-ratio: 160/98;
 	width: 100%;
 }
 .info-container {
 	padding: 30px 20px;
+	background-color: var(--color-white);
 }
 .country-name {
 	display: block;
@@ -103,6 +115,7 @@ main ul li img {
 	top: 50%;
 	left: 15px;
 	transform: translate(10px, -50%);
+	color: var(--color-light-mode-input);
 }
 
 #query {
@@ -111,10 +124,14 @@ main ul li img {
 	width: 400px;
 	max-width: 100%;
 	border: none;
+	background-color: var(--color-white);
 	color: var(--color-light-mode-input);
 	font-size: 14px;
 	outline: none;
 	border-radius: 7px;
+}
+#query::placeholder {
+	color: var(--color-light-mode-input);
 }
 .custom-select {
 	position: relative;
@@ -137,7 +154,7 @@ main ul li img {
 }
 
 .select-selected:after {
-	border: solid black;
+	border: solid var(--color-light-mode-text);
 	border-width: 0 2px 2px 0;
 	display: inline-block;
 	padding: 2px;
@@ -155,7 +172,7 @@ main ul li img {
 }
 .select-items div,
 .select-selected {
-	color: black;
+	color: var(--color-light-mode-text);
 	font-size: 14px;
 	padding: 4px 20px;
 	cursor: pointer;
@@ -163,7 +180,7 @@ main ul li img {
 }
 .select-items {
 	position: absolute;
-	background-color: white;
+	background-color: var(--color-white);
 	top: 100%;
 	left: 0;
 	right: 0;
@@ -217,6 +234,10 @@ main ul li img {
 .detail-content {
 	display: flex;
 	flex-direction: column;
+}
+#moon.hidden,
+#sun.hidden {
+	display: none;
 }
 .row {
 	display: flex;
@@ -274,6 +295,7 @@ main ul li img {
 	border-radius: 4px;
 	text-align: center;
 	text-transform: capitalize;
+	background-color: var(--color-white);
 	color: var(--color-light-mode-text);
 }
 
