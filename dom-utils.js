@@ -74,28 +74,30 @@ const createDetailElement = (country) => {
 	detailContainerElement.appendChild(flagImgElement);
 	detailContentElement.appendChild(detailNameElement);
 
-	detailContentElement.appendChild(
-		createInfoElement("Native name", country.nativeName)
-	);
-	detailContentElement.appendChild(
+	const firstDiv = document.createElement("div");
+	firstDiv.classList.add("first-div");
+	const secondDiv = document.createElement("div");
+	secondDiv.classList.add("second-div");
+
+	const row = document.createElement("div");
+	row.classList.add("row");
+
+	firstDiv.appendChild(createInfoElement("Native name", country.nativeName));
+	firstDiv.appendChild(
 		createInfoElement("Population", numberSeparator(country.population))
 	);
-	detailContentElement.appendChild(createInfoElement("Region", country.region));
-	detailContentElement.appendChild(
-		createInfoElement("Sub Region", country.subRegion)
-	);
-	detailContentElement.appendChild(
-		createInfoElement("Capital", country.capital)
-	);
-	detailContentElement.appendChild(
-		createInfoElement("Top Level Domain", country.tld)
-	);
-	detailContentElement.appendChild(
-		createInfoElement("Currencies", country.currencies)
-	);
-	detailContentElement.appendChild(
-		createInfoElement("Languages", country.languages)
-	);
+	firstDiv.appendChild(createInfoElement("Region", country.region));
+	firstDiv.appendChild(createInfoElement("Sub Region", country.subRegion));
+	firstDiv.appendChild(createInfoElement("Capital", country.capital));
+
+	row.appendChild(firstDiv);
+
+	secondDiv.appendChild(createInfoElement("Top Level Domain", country.tld));
+	secondDiv.appendChild(createInfoElement("Currencies", country.currencies));
+	secondDiv.appendChild(createInfoElement("Languages", country.languages));
+
+	row.appendChild(secondDiv);
+	detailContentElement.appendChild(row);
 
 	if (country.borderCountries && country.borderCountries.length > 0) {
 		detailContentElement.appendChild(createBorderCountriesContainer(country));
@@ -119,22 +121,41 @@ const createBorderCountriesContainer = (country) => {
 	const borderCountriesContainerElement = document.createElement("div");
 
 	const labelElement = document.createElement("strong");
+	labelElement.classList.add("border-countries");
 	labelElement.innerText = "Border Countries: ";
 
 	const buttonsContainerElement = document.createElement("div");
 	buttonsContainerElement.classList.add("border-buttons-container");
 
 	borderCountriesContainerElement.appendChild(labelElement);
-	//todo
-	// country.borderCountries.forEach((border) => {
-	// 	buttonsContainerElement.appendChild(
-	// 		createRouteButton(
-	// 			translateCountryBorderName(border),
-	// 			"border-country-btn",
-	// 			`/?country=${border}`
-	// 		)
-	// 	);
-	// });
+	const codesString = country.borderCountries.toString().toLowerCase();
+
+	const API_URL_BORDER_NAMES = `https://restcountries.com/v3.1/alpha/?codes=${codesString}`;
+	let borderNames;
+
+	const renderTranslatedBorderCountries = (arr) => {
+		arr.forEach((border) => {
+			buttonsContainerElement.appendChild(
+				createRouteButton(
+					border.name,
+					"border-country-btn",
+					`/?country=${border.code}`
+				)
+			);
+		});
+	};
+
+	fetch(API_URL_BORDER_NAMES)
+		.then((res) => res.json())
+		.then((borderCountries) => {
+			borderNames = borderCountries.map((borderCntr) => {
+				return {
+					name: borderCntr.name.common,
+					code: borderCntr.cca3,
+				};
+			});
+			renderTranslatedBorderCountries(borderNames);
+		});
 
 	borderCountriesContainerElement.appendChild(buttonsContainerElement);
 
